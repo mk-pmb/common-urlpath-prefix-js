@@ -3,10 +3,10 @@
 'use strict';
 
 module.exports = function common_urlpath_prefix(paths, opts) {
-  var basePath = '', bpLen = 0, dirSep, prefix = true;
+  var basePath = '', bpLen = 0, sep, prefix = true;
   if (!opts) { opts = false; }
-  if ((typeof opts) === 'string') { opts = { dirsep: opts }; }
-  dirSep = (String(opts.dirSep || '') || '/');
+  if ((typeof opts) === 'string') { opts = { sep: opts }; }
+  sep = (String(opts.sep || '') || '/');
   paths.forEach(function (path) {
     if (prefix === false) { return; }
     path = String(path);
@@ -23,8 +23,9 @@ module.exports = function common_urlpath_prefix(paths, opts) {
         console.log('?< ' + prefix);
         console.log('!= ' + basePath);
       }
-      bpLen = basePath.substr(0, bpLen - 1).lastIndexOf(dirSep) + 1;
-      if (bpLen > 0) {
+      bpLen = basePath.substr(0, bpLen - 1).lastIndexOf(sep);
+      if (bpLen >= 0) {
+        bpLen += sep.length;
         basePath = basePath.substr(0, bpLen);
         prefix = path.substr(0, bpLen);
       } else {

@@ -7,7 +7,28 @@ Computes the longest common base path prefix.
 Usage
 -----
 
-tbd
+API:
+```javascript
+var cup = require('common-urlpath-prefix'),
+  paths = process.argv.slice(2),
+  opts = { sep: '/' };
+
+console.dir(cup(paths, opts));
+console.dir(cup(paths));
+console.dir(cup(paths, '/'));
+```
+
+* For details see [`doc/demo/usage.js`](doc/demo/usage.js).
+
+CLI:
+```bash
+$ common-urlpath-prefix $(find /usr/share/apache2/ -name '*.png')
+/usr/share/apache2/icons/
+$ CUP_SEP=. common-urlpath-prefix /etc/apparmor.d/*d
+/etc/apparmor.d/usr.sbin.
+$ CUP_SEP=. common-urlpath-prefix $(git config --list | grep rig)
+remote.origin.
+```
 
 
 Comparison to other modules
@@ -25,6 +46,7 @@ Major differences from
   * CUP accepts URLs.
   * CUP will return the full original path if only one path/URL is given
     or all given paths are equal.
+
 
 
 License

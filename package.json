@@ -1,0 +1,31 @@
+{
+  "name": "common-urlpath-prefix",
+  "version": "0.0.1",
+  "description": "Compute the longest path prefix for paths or URLs.",
+  "main": "cup.js",
+  "bin": {
+    "common-urlpath-prefix": "./cli.js"
+  },
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-pmb/common-urlpath-prefix-js.git"
+  },
+  "keywords": [
+    "common",
+    "prefix",
+    "path",
+    "url"
+  ],
+  "author": "M.K.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mk-pmb/common-urlpath-prefix-js/issues"
+  },
+  "homepage": "https://github.com/mk-pmb/common-urlpath-prefix-js#readme"
+}
