@@ -1,6 +1,6 @@
 {
   "name": "common-urlpath-prefix",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Compute the longest path prefix for paths or URLs.",
   "main": "cup.js",
   "bin": {
