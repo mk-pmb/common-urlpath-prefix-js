@@ -20,12 +20,22 @@ cup([same, other, yetanother]);     // -> "ftp://example.net/"
 cup([same, same.replace(/\.net/, '.com')]);     // -> "ftp://"
 cup([same, same.replace(/^ftp/, 'http')]);      // -> ""
 
-demo.chap('Paths are not resolved:');
+demo.chap('Paths are not resolved, default ports are not stripped:');
 same        = '/etc/hostname';
 other       = '/etc/./hostname';
 yetanother  = '//etc/hostname';
 cup([same, other]);         // -> "/etc/"
 cup([same, yetanother]);    // -> "/"
+same        = 'http://example.net/robots.txt';
+other       = 'http://example.net/./robots.txt';
+yetanother  = 'http://example.net:80/robots.txt';
+cup([same, other]);         // -> "http://example.net/"
+cup([same, yetanother]);    // -> "http://" (b/c ":" is not a *path* sep)
+
+demo.chap('No hostname magic either:');
+same        = 'http://example.net/robots.txt';
+other       = 'http://example.net./robots.txt';
+cup([same, other]);         // -> "http://"
 
 demo.chap('Simple DOS-style paths:');
 same        = "C:\\WFW311\\SMARTDRV.EXE";
