@@ -20,6 +20,20 @@ cup([same, other, yetanother]);     // -> "ftp://example.net/"
 cup([same, same.replace(/\.net/, '.com')]);     // -> "ftp://"
 cup([same, same.replace(/^ftp/, 'http')]);      // -> ""
 
+demo.chap('Simple DOS-style paths:');
+same        = "C:\\WFW311\\SMARTDRV.EXE";
+other       = "C:\\WFW311\\HIMEM.SYS";
+yetanother  = "C:\\AUTOEXEC.BAT";
+cup([same, other], "\\");               // -> "C:\\WFW311\\"
+cup([same, other, yetanother], "\\");   // -> "C:\\"
+
+demo.chap('UNC paths:');
+same        = "\\\\pandora\\box\\README.txt";
+other       = "\\\\pandora\\box\\AUTORUN.INF";
+yetanother  = "\\\\hermes\\legal\\cargo.doc";
+cup([same, other], "\\");               // -> "\\\\pandora\\box\\"
+cup([same, other, yetanother], "\\");   // -> "\\\\"
+
 demo.chap('Custom path separator:');
 same        = 'Edit -> Prefs -> Advanced -> Enable JavaScript';
 other       = 'Edit -> Prefs -> Advanced -> Allow Popups';
