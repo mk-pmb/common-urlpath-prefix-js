@@ -20,6 +20,13 @@ cup([same, other, yetanother]);     // -> "ftp://example.net/"
 cup([same, same.replace(/\.net/, '.com')]);     // -> "ftp://"
 cup([same, same.replace(/^ftp/, 'http')]);      // -> ""
 
+demo.chap('Paths are not resolved:');
+same        = '/etc/hostname';
+other       = '/etc/./hostname';
+yetanother  = '//etc/hostname';
+cup([same, other]);         // -> "/etc/"
+cup([same, yetanother]);    // -> "/"
+
 demo.chap('Simple DOS-style paths:');
 same        = "C:\\WFW311\\SMARTDRV.EXE";
 other       = "C:\\WFW311\\HIMEM.SYS";
