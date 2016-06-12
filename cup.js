@@ -2,7 +2,8 @@
 /* -*- tab-width: 2 -*- */
 'use strict';
 
-module.exports = function common_urlpath_prefix(paths, opts) {
+
+var cup = function common_urlpath_prefix(paths, opts) {
   var basePath = '', bpLen = 0, sep, prefix = true;
   if (!opts) { opts = false; }
   if ((typeof opts) === 'string') { opts = { sep: opts }; }
@@ -40,3 +41,26 @@ module.exports = function common_urlpath_prefix(paths, opts) {
   return basePath;
 };
 
+
+cup.cfg = function configureDefaultOpts(defaultOpts) {
+  defaultOpts = Object.assign(Object.create(null), defaultOpts);
+  return function common_urlpath_prefix_custom_defaults(paths, opts) {
+    return cup(paths, (opts
+      ? Object.assign(Object.create(null), defaultOpts, opts)
+      : defaultOpts));
+  };
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports = cup;

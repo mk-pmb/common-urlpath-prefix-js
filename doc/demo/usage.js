@@ -2,7 +2,7 @@
 /* -*- tab-width: 2 -*- */
 'use strict';
 
-var cup = require('common-urlpath-prefix'),
+var cup = require('common-urlpath-prefix'), cupArrow,
   same        = 'ftp://example.net/demo/same.txt',
   other       = 'ftp://example.net/demo/other.txt',
   yetanother  = 'ftp://example.net/yet/another.txt',
@@ -52,6 +52,13 @@ yetanother  = 'Edit -> Select all';
 cup([same, other], { sep: ' -> ' });      // -> "Edit -> Prefs -> Advanced -> "
 cup([same, other, yetanother], ' -> ');   // -> "Edit -> "
 cup([same, other, yetanother], '->');     // -> "Edit ->"
+
+cupArrow = cup.cfg({ sep: '->' });
+cupArrow = demo.logwrap(cupArrow);
+same     = 'cup.cfg(defaultOpts) -> cup() with default options';
+other    = 'cup.cfg(defaultOpts) -> save repeated code';
+cupArrow([same, other]);    // -> "cup.cfg(defaultOpts) ->"
+
 
 demo.chap('Unusual inputs:');
 cup([]);              // -> ""

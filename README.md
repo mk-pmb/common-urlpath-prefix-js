@@ -18,7 +18,14 @@ console.dir(cup(paths));
 console.dir(cup(paths, '/'));
 ```
 
-* For details see [`doc/demo/usage.js`](doc/demo/usage.js).
+For details see [`doc/demo/usage.js`](doc/demo/usage.js).
+
+You can use `.cfg(defaultOpts)` to get a copy of `cup()` with custom
+default options:
+```javascript
+var cupBksl = require('common-urlpath-prefix').cfg({ sep: "\\" });
+console.dir(cupBksl(["C:\\Users\\Alice", "C:\\Users\\Bob"]));
+```
 
 CLI:
 ```bash

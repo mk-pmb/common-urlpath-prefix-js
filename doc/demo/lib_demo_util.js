@@ -16,7 +16,8 @@ EX.vcup = function vcup(paths) {
 EX.dump = function (x) { console.log(JSON.stringify(x)); };
 
 EX.logwrap = function (origFunc) {
-  return function () {
+  var wrappedFunc;
+  wrappedFunc = function () {
     var result;
     try {
       result = origFunc.apply(null, arguments);
@@ -26,6 +27,13 @@ EX.logwrap = function (origFunc) {
     }
     console.log(result);
   };
+  Object.keys(origFunc).forEach(function copyExtraKey(key) {
+    if (wrappedFunc[key] === undefined) {
+      console.error('Copy key: ' + key);
+      wrappedFunc[key] = origFunc[key];
+    }
+  });
+  return wrappedFunc;
 };
 
 EX.chap = function chapter(title) {
