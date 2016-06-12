@@ -33,6 +33,8 @@ other       = "C:\\WFW311\\HIMEM.SYS";
 yetanother  = "C:\\AUTOEXEC.BAT";
 cup([same, other], "\\");               // -> "C:\\WFW311\\"
 cup([same, other, yetanother], "\\");   // -> "C:\\"
+other       = "C:\\AUTORUN.INF";
+cup([other, yetanother], "\\");         // -> "C:\\" (not: "C:\\AUTO")
 
 demo.chap('UNC paths:');
 same        = "\\\\pandora\\box\\README.txt";
@@ -40,6 +42,8 @@ other       = "\\\\pandora\\box\\AUTORUN.INF";
 yetanother  = "\\\\hermes\\legal\\cargo.doc";
 cup([same, other], "\\");               // -> "\\\\pandora\\box\\"
 cup([same, other, yetanother], "\\");   // -> "\\\\"
+other       = "\\\\hermes\\legends\\hades.gpx";
+cup([other, yetanother], "\\");         // -> "\\\\hermes\\" (not: …"\\leg")
 
 demo.chap('Custom path separator:');
 same        = 'Edit -> Prefs -> Advanced -> Enable JavaScript';
