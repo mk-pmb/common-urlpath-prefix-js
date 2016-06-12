@@ -20,13 +20,6 @@ console.dir(cup(paths, '/'));
 
 For details see [`doc/demo/usage.js`](doc/demo/usage.js).
 
-You can use `.cfg(defaultOpts)` to get a copy of `cup()` with custom
-default options:
-```javascript
-var cupBksl = require('common-urlpath-prefix').cfg({ sep: "\\" });
-console.dir(cupBksl(["C:\\Users\\Alice", "C:\\Users\\Bob"]));
-```
-
 CLI:
 ```bash
 $ common-urlpath-prefix $(find /usr/share/apache2/ -name '*.png')
@@ -35,6 +28,13 @@ $ CUP_SEP=. common-urlpath-prefix /etc/apparmor.d/*d
 /etc/apparmor.d/usr.sbin.
 $ CUP_SEP=. common-urlpath-prefix $(git config --list | grep rig)
 remote.origin.
+```
+
+You can use `.cfg(defaultOpts)` to get a wrapper for `cup()` with custom
+default options:
+```javascript
+var cupBksl = require('common-urlpath-prefix').cfg({ sep: "\\" });
+console.dir(cupBksl(["C:\\Users\\Alice", "C:\\Users\\Bob"]));
 ```
 
 
